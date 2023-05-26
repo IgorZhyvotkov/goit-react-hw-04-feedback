@@ -1,14 +1,9 @@
 import { Component } from 'react';
-import {
-  Container,
-  Section,
-  FeedbackHeader,
-  FeedbackButtonList,
-  FeedbackButtonListItem,
-  Button,
-  StatisticksList,
-  StatisticksListItem,
-} from './App.styled';
+import { Container } from './App.styled';
+
+import FeedbackOptions from 'components/FeedbackOptions';
+import Statistics from 'components/Statistics';
+import Section from 'components/Section';
 
 class App extends Component {
   state = {
@@ -17,47 +12,40 @@ class App extends Component {
     bad: 0,
   };
 
-  hendleClickGood = () => {
-    this.setState(prevState => ({ good: prevState.good + 1 }));
-  };
-  hendleClickNeutral = () => {
-    this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-  };
-  hendleClickBad = () => {
-    this.setState(prevState => ({ bad: prevState.bad + 1 }));
-  };
+  // hendleClickGood = () => {
+  //   this.setState(prevState => ({ good: prevState.good + 1 }));
+  // };
+  // hendleClickNeutral = () => {
+  //   this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
+  // };
+  // hendleClickBad = () => {
+  //   this.setState(prevState => ({ bad: prevState.bad + 1 }));
+  // };
 
   render() {
+    const options = Object.keys(this.state);
     const { good, neutral, bad } = this.state;
-    const countTotalFeedback = good + neutral+ bad;
-    const countPositiveFeedbackPercentage = ((100*good) / countTotalFeedback).toFixed(0);
+
+    const countTotalFeedback = good + neutral + bad;
+    const countPositiveFeedbackPercentage = (
+      (100 * good) /
+      countTotalFeedback
+    ).toFixed(0);
 
     return (
       <Container>
-        <Section>
-          <FeedbackHeader>Please leave feddback</FeedbackHeader>
-          <FeedbackButtonList>
-            <FeedbackButtonListItem>
-              <Button onClick={this.hendleClickGood}>Good</Button>
-            </FeedbackButtonListItem>
-            <FeedbackButtonListItem>
-              <Button onClick={this.hendleClickNeutral}>Neutral</Button>
-            </FeedbackButtonListItem>
-            <FeedbackButtonListItem>
-              <Button onClick={this.hendleClickBad}>Bad</Button>
-            </FeedbackButtonListItem>
-          </FeedbackButtonList>
+        <Section title={'Please leave feddback'}>
+          <FeedbackOptions option={options} />
+        </Section>
 
-          <FeedbackHeader>Statistics</FeedbackHeader>
-          <StatisticksList>
-            <StatisticksListItem>Good: {good}</StatisticksListItem>
-            <StatisticksListItem>Neutral: {neutral}</StatisticksListItem>
-            <StatisticksListItem>Bad: {bad}</StatisticksListItem>
-            <StatisticksListItem>
-              Total: {countTotalFeedback}
-            </StatisticksListItem>
-            <StatisticksListItem>Positive feedback: {countPositiveFeedbackPercentage}%</StatisticksListItem>
-          </StatisticksList>
+        <Section title={'Statistics'}>
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            countTotalFeedback={countTotalFeedback}
+            countPositiveFeedbackPercentage={countPositiveFeedbackPercentage}
+          />
         </Section>
       </Container>
     );

@@ -14,9 +14,7 @@ function Statistics({
       <StatisticksListItem>Neutral: {neutral}</StatisticksListItem>
       <StatisticksListItem>Bad: {bad}</StatisticksListItem>
       <StatisticksListItem>Total: {countTotalFeedback}</StatisticksListItem>
-      <StatisticksListItem>
-        Positive feedback: {countPositiveFeedbackPercentage}%
-      </StatisticksListItem>
+      <StatisticksListItem>Positive feedback: {countPositiveFeedbackPercentage}%</StatisticksListItem>
     </StatisticksList>
     </>
   );

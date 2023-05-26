@@ -4,14 +4,14 @@ import {
   FeedbackButtonListItem,
   Button} from './FeedbackOptions.styled';
 
-function FeedbackOptions({option, onLeaveFeedback}) {
+function FeedbackOptions({options, onLeaveFeedback}) {
 return (  
   <FeedbackButtonList>
-{option.map(item=> {
+{options.map(name=> {
   return(
-    <FeedbackButtonListItem key={item}>
-    <Button onClick={(e)=>onLeaveFeedback(item)}>
-      {item}
+    <FeedbackButtonListItem key={name}>
+    <Button  onClick={()=>onLeaveFeedback(name)}>
+      {name}
     </Button>
   </FeedbackButtonListItem>
   )

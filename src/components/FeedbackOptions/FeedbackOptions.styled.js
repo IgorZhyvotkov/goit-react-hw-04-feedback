@@ -9,7 +9,7 @@ display: flex;
 gap: 10px;
 `;
 
-export const FeedbackButtonListItem = styled.ul`
+export const FeedbackButtonListItem = styled.li`
 
 `;
 

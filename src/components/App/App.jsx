@@ -12,30 +12,33 @@ class App extends Component {
     bad: 0,
   };
 
-  // hendleClickGood = () => {
-  //   this.setState(prevState => ({ good: prevState.good + 1 }));
-  // };
-  // hendleClickNeutral = () => {
-  //   this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-  // };
-  // hendleClickBad = () => {
-  //   this.setState(prevState => ({ bad: prevState.bad + 1 }));
-  // };
+  onLeaveFeedback = name => {
+    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
+  };
+
+  countTotalFeedback = () => {
+   return this.state.good + this.state.neutral + this.state.bad;
+  };
+
+  // countPositiveFeedbackPercentage = countTotal => ((100 * this.state.good) / countTotal).toFixed(0);
 
   render() {
     const options = Object.keys(this.state);
     const { good, neutral, bad } = this.state;
+    const total = good + neutral + bad;
 
-    const countTotalFeedback = good + neutral + bad;
-    const countPositiveFeedbackPercentage = (
-      (100 * good) /
-      countTotalFeedback
-    ).toFixed(0);
+    // const countPositiveFeedbackPercentage = (
+    //   (100 * good) /
+    //   countTotalFeedback
+    // ).toFixed(0);
 
     return (
       <Container>
         <Section title={'Please leave feddback'}>
-          <FeedbackOptions option={options} />
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
         </Section>
 
         <Section title={'Statistics'}>
@@ -43,8 +46,8 @@ class App extends Component {
             good={good}
             neutral={neutral}
             bad={bad}
-            countTotalFeedback={countTotalFeedback}
-            countPositiveFeedbackPercentage={countPositiveFeedbackPercentage}
+            countTotalFeedback={this.countTotalFeedback}
+            // countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage}
           />
         </Section>
       </Container>

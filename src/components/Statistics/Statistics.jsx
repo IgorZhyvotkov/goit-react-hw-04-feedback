@@ -1,4 +1,4 @@
-import { StatisticksTitle, StatisticksList, StatisticksListItem } from './Statistics.styled';
+import { StatisticksList, StatisticksListItem } from './Statistics.styled';
 
 function Statistics({
   good,

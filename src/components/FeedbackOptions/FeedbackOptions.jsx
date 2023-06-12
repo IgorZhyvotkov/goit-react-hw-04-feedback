@@ -5,7 +5,7 @@ import {
   Button} from './FeedbackOptions.styled';
 
 function FeedbackOptions({options, onLeaveFeedback}) {
-return (  
+return (    
   <FeedbackButtonList>
 {options.map(name=> {
   return(
